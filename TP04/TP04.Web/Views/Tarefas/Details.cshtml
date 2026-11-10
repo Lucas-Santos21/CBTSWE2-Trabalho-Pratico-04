@@ -1,0 +1,51 @@
+﻿@model TP04.Domain.Models.Tarefa
+
+@{
+    ViewData["Title"] = "Detalhes da tarefa";
+}
+
+<div class="container py-4">
+
+    <div class="mb-4">
+        <a asp-controller="Tarefas" asp-action="Index"
+           class="btn btn-outline-secondary">
+            Voltar
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <h2 class="fw-bold">@Model.Titulo</h2>
+
+            <hr />
+
+            <div class="mb-3">
+                <strong>Descrição:</strong>
+                <p>@Model.Descricao</p>
+            </div>
+
+            <div class="mb-3">
+                <strong>Data de criação:</strong>
+                <p>@Model.DataCriacao.ToString("dd/MM/yyyy HH:mm")</p>
+            </div>
+
+            <div class="mb-3">
+                <strong>Data de vencimento:</strong>
+                <p>@Model.DataVencimento?.ToString("dd/MM/yyyy HH:mm")</p>
+            </div>
+
+            <div class="mb-3">
+                <strong>Status:</strong>
+                <p>@Model.Status</p>
+            </div>
+
+            <div class="mb-3">
+                <strong>Prioridade:</strong>
+                <p>@Model.Prioridade</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>

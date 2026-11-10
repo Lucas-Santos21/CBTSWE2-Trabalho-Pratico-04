@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "Gerenciador de Tarefas";
+}
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold">Minhas tarefas</h1>
+            <p class="text-muted mb-0">
+                Organize suas atividades e acompanhe seus prazos.
+            </p>
+        </div>
+
+        <button class="btn btn-primary" id="btnNovaTarefa">
+            + Nova tarefa
+        </button>
+    </div>
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Total de tarefas</p>
+                    <h3 id="totalTarefas">0</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Pendentes</p>
+                    <h3 id="tarefasPendentes">0</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Em andamento</p>
+                    <h3 id="tarefasEmAndamento">0</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Concluídas</p>
+                    <h3 id="tarefasConcluidas">0</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="row g-3 mb-3">
+
+                <div class="col-md-8">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="pesquisaTarefas"
+                        placeholder="Pesquisar tarefa..."
+                    />
+                </div>
+
+                <div class="col-md-4">
+                    <select class="form-select" id="filtroStatus">
+                        <option value="">Todos os status</option>
+                        <option value="0">Pendente</option>
+                        <option value="1">Em andamento</option>
+                        <option value="2">Concluída</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal fade" id="modalTarefa" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tituloModal">Nova tarefa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form id="formTarefa">
+
+                                <input type="hidden" id="tarefaId">
+
+                                <div class="mb-3">
+                                    <label for="titulo" class="form-label">Título</label>
+                                    <input type="text" id="titulo" class="form-control" required minlength="3" maxlength="100">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="descricao" class="form-label">Descrição</label>
+                                    <textarea id="descricao" class="form-control" maxlength="500"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="dataVencimento" class="form-label">Data de vencimento</label>
+                                    <input type="datetime-local" id="dataVencimento" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select id="status" class="form-select">
+                                        <option value="0">Pendente</option>
+                                        <option value="1">Em andamento</option>
+                                        <option value="2">Concluída</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="prioridade" class="form-label">Prioridade</label>
+                                    <select id="prioridade" class="form-select">
+                                        <option value="0">Baixa</option>
+                                        <option value="1">Média</option>
+                                        <option value="2">Alta</option>
+                                    </select>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+
+                            <button type="button" class="btn btn-primary" id="btnSalvarTarefa">
+                                Salvar
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Vencimento</th>
+                            <th>Prioridade</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaTarefas">
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-4">
+                                Carregando tarefas...
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/tarefas.js" asp-append-version="true"></script>
+}

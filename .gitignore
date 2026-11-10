@@ -1,0 +1,35 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Compilação .NET
+[Bb]in/
+[Oo]bj/
+
+# Arquivos temporários
+[Tt]emp/
+[Tt]mp/
+*.tmp
+*.log
+
+# Resultados de testes
+[Tt]est[Rr]esults/
+*.trx
+
+# Banco de dados SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Configurações e arquivos locais
+.env
+.env.*
+!.env.example
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini

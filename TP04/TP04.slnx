@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TP04.Domain/TP04.Domain.csproj" />
+  <Project Path="TP04.Tests/TP04.Tests.csproj" />
+  <Project Path="TP04.Web/TP04.Web.csproj" />
+</Solution>
